@@ -64,10 +64,11 @@ public class ShapeDrawingForm : Form
 	{
 
         XmlWriter writer;
-        Exporter ex = new SVGExporter(writer);
+        Exporter ex = new SVGExporter();
+     
 
-		
-		SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+        SaveFileDialog saveFileDialog = new SaveFileDialog();
 
 		saveFileDialog.Filter = "SVG Files|*.svg";
 		saveFileDialog.RestoreDirectory = true;
@@ -77,10 +78,20 @@ public class ShapeDrawingForm : Form
 			
             using(writer =  XmlWriter.Create(saveFileDialog.FileName))
             {
-                writer.WriteStartDocument();
-                writer.WriteStartElement("Employees");
+                (ex as SVGExporter).setWriter(writer);
 
-                foreach(Shape shape in shapes)
+
+                writer.WriteStartDocument(false);
+
+
+
+
+                writer.WriteStartElement("svg" , "http://www.w3.org/2000/svg");
+
+              //  writer.WriteAttributeString("xmlns", );
+                writer.WriteAttributeString("version", "1.1");
+
+                foreach (Shape shape in shapes)
                 {
                     shape.Draw(ex);
                 }
