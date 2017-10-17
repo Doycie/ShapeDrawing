@@ -13,6 +13,9 @@ class SVGExporter : Exporter
         int r = size / 2;
         int cx = x + r;
         int cy = y + r;
+        int strokewidth = 1;
+        string fill = "none";
+        string stroke = "black";
     }
 
     public override void makeRectangle(int x, int y, int width, int height)
