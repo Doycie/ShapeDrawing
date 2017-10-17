@@ -17,8 +17,8 @@ class DrawExporter : Exporter
 
     public override void makeCircle(int x, int y, int size)
     {
-            Pen pen = new Pen(Color.Black);
-            canvas.DrawEllipse(pen, x, y, size, size);
+        Pen pen = new Pen(Color.Black);
+        canvas.DrawEllipse(pen, x, y, size, size);
     }
 
     public override void makeRectangle(int x, int y, int width, int height)
