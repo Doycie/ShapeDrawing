@@ -36,9 +36,13 @@ class SVGExporter : Exporter
 
         StringBuilder s = new StringBuilder();
 
+        s.Append(x.ToString()+","+ y.ToString()+ " ");
+        s.Append((x+width).ToString() + "," + y.ToString() + " ");
+        s.Append((x+width).ToString() + "," + (y+height).ToString() + " ");
+        s.Append(x.ToString() + "," + (y+height).ToString() + " ");
+        s.Append(x.ToString() + "," + y.ToString());
 
-
-
+        xmlwriter.WriteAttributeString("points", s.ToString());
         xmlwriter.WriteAttributeString("stroke-width", strokewidth.ToString());
         xmlwriter.WriteAttributeString("fill", fill);
         xmlwriter.WriteAttributeString("stroke", stroke);
