@@ -6,17 +6,21 @@ using System.Text;
 
 class SVGExporter : Exporter
 {
-    public override void makeCircle(int x, int y, int r)
+    string svgOutput;
+
+    public override void makeCircle(int x, int y, int size)
+    {
+        int r = size / 2;
+        int cx = x + r;
+        int cy = y + r;
+    }
+
+    public override void makeRectangle(int x, int y, int width, int height)
     {
         throw new NotImplementedException();
     }
 
-    public override void makeRectangle(int x, int y, int w, int h)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override void makeStar(int x, int y, int w, int h)
+    public override void makeStar(int x, int y, int width, int height)
     {
         throw new NotImplementedException();
     }
