@@ -21,10 +21,8 @@ class Circle : Shape
 
     public override void Draw(Exporter exporter)
     {
-		Pen pen = new Pen(Color.Black);
-        Canvas.DrawEllipse(pen, this.x, this.y, this.size, this.size);
 
-        exporter.makeShape(this);
+        exporter.makeCircle(x,y,size);
     }
 
 }
