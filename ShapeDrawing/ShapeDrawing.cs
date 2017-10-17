@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
+using System.Xml;
 
 public class ShapeDrawingForm : Form
 {
@@ -61,26 +62,39 @@ public class ShapeDrawingForm : Form
     // What to do when the user wants to export a TeX file
 	private void exportHandler (object sender, EventArgs e)
 	{
-		Stream stream;
+
+        XmlWriter writer;
+        Exporter ex = new SVGExporter(writer);
+
+		
 		SaveFileDialog saveFileDialog = new SaveFileDialog();
 
-		saveFileDialog.Filter = "TeX files|(*.tex)";
+		saveFileDialog.Filter = "SVG Files|*.svg";
 		saveFileDialog.RestoreDirectory = true;
 		
 		if(saveFileDialog.ShowDialog() == DialogResult.OK)
 		{
-			if((stream = saveFileDialog.OpenFile()) != null)
-			{
-				// Insert code here that generates the string of LaTeX
-                //   commands to draw the shapes
-                using(StreamWriter writer = new StreamWriter(stream))
+			
+            using(writer =  XmlWriter.Create(saveFileDialog.FileName))
+            {
+                writer.WriteStartDocument();
+                writer.WriteStartElement("Employees");
+
+                foreach(Shape shape in shapes)
                 {
-                        // Write strings to the file here using:
-                        //   writer.WriteLine("Hello World!");
-                }				
-			}
+                    shape.Draw(ex);
+                }
+
+
+                writer.WriteEndElement();
+                writer.WriteEndDocument();
+            }				
+			
 		}
 	}
+
+
+   
 
     private void OnPaint(object sender, PaintEventArgs e)
 	{
