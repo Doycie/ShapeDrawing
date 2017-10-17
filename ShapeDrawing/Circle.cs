@@ -10,6 +10,7 @@ class Circle : Shape
     private int x;
 	private int y;
 	private int size;
+    private Exporter e;
 
     public Circle(int x, int y, int size)
     {
