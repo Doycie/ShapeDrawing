@@ -8,6 +8,7 @@ using System.Collections.Generic;
 public class ShapeDrawingForm : Form
 {
 	private List<Shape> shapes;
+    private Exporter exporter;
 
 	public ShapeDrawingForm()
 	{
@@ -30,7 +31,9 @@ public class ShapeDrawingForm : Form
 		
 		// Initialize shapes
         shapes = new List<Shape>();
-		
+
+        
+
 		// Listen to Paint event to draw shapes
 		this.Paint += new PaintEventHandler(this.OnPaint); 
 	}
@@ -81,8 +84,10 @@ public class ShapeDrawingForm : Form
 
     private void OnPaint(object sender, PaintEventArgs e)
 	{
-		// Draw all the shapes
-		foreach(Shape shape in shapes)
+
+        exporter = new DrawExporter(e.Graphics);
+        // Draw all the shapes
+        foreach (Shape shape in shapes)
 			shape.Draw(e.Graphics);
 	}
 }

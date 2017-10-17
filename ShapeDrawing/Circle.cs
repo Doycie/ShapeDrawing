@@ -10,7 +10,7 @@ class Circle : Shape
     private int x;
 	private int y;
 	private int size;
-    private Exporter e;
+  
 
     public Circle(int x, int y, int size)
     {
@@ -19,10 +19,12 @@ class Circle : Shape
 		this.size = size;
     }
 
-    public override void Draw(Graphics Canvas)
+    public override void Draw(Exporter exporter)
     {
 		Pen pen = new Pen(Color.Black);
         Canvas.DrawEllipse(pen, this.x, this.y, this.size, this.size);
+
+        exporter.makeShape(this);
     }
 
 }

@@ -4,26 +4,21 @@ using System.Linq;
 using System.Text;
 
 
-class SVGExporter
+class SVGExporter : Exporter
 {
-    void makeShape(Shape shape)
+    public override void makeCircle(int x, int y, int r)
     {
-        if (shape is Star)
-        {
+        throw new NotImplementedException();
+    }
 
-        }
-        else if (shape is Circle)
-        {
+    public override void makeRectangle(int x, int y, int w, int h)
+    {
+        throw new NotImplementedException();
+    }
 
-        }
-        else if (shape is Rectangle) {
-
-
-        }
-
-
-
-
+    public override void makeStar(int x, int y, int w, int h)
+    {
+        throw new NotImplementedException();
     }
 }
 

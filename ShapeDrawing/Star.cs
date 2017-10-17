@@ -20,7 +20,7 @@ public class Star : Shape
 		this.height = height;
 	}
 
-	public override void Draw (Graphics Canvas)
+	public override void Draw (Exporter exporter)
 	{
 		Pen pen = new Pen (Color.Black);
 
@@ -49,7 +49,10 @@ public class Star : Shape
                                 pts[(i+1) % numPoints].X,
                                 pts[(i+1) % numPoints].Y);
 		}
-		
+
+        exporter.makeShape(this);
+
+
 	}
 }
 

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 
 
-abstract class Exporter
+public abstract class Exporter
 {
-    public abstract void makeShape(Shape shape);
-
+    public abstract void makeCircle(int x, int y, int r);
+    public abstract void makeRectangle(int x,int y,int w, int h);
+    public abstract void makeStar(int x, int y, int w, int h);
 }
 
 
