@@ -8,31 +8,33 @@ using System.Drawing;
 class SVGExporter : Exporter
 {
     XmlWriter xmlwriter;
+    private int strokewidth = 1;
+    private string fill = "none";
+    private string stroke = "black";
 
-    public override void makeCircle(int x, int y, int size)
+    private void Finish()
     {
-        int r = size / 2;
-        int cx = x + r;
-        int cy = y + r;
-        int strokewidth = 1;
-        string fill = "none";
-        string stroke = "black";
-
-        xmlwriter.WriteStartElement("circle");
-        xmlwriter.WriteAttributeString("cx", cx.ToString());
-        xmlwriter.WriteAttributeString("cy", cy.ToString());
-        xmlwriter.WriteAttributeString("r",r.ToString());
         xmlwriter.WriteAttributeString("stroke-width", strokewidth.ToString());
         xmlwriter.WriteAttributeString("fill", fill);
         xmlwriter.WriteAttributeString("stroke", stroke);
         xmlwriter.WriteEndElement();
     }
 
+    public override void makeCircle(int x, int y, int size)
+    {
+        int r = size / 2;
+        int cx = x + r;
+        int cy = y + r;
+
+        xmlwriter.WriteStartElement("circle");
+        xmlwriter.WriteAttributeString("cx", cx.ToString());
+        xmlwriter.WriteAttributeString("cy", cy.ToString());
+        xmlwriter.WriteAttributeString("r",r.ToString());
+        Finish();
+    }
+
     public override void makeRectangle(int x, int y, int width, int height)
     {
-        int strokewidth = 1;
-        string fill = "none";
-        string stroke = "black";
         xmlwriter.WriteStartElement("polyline");
 
         StringBuilder s = new StringBuilder();
@@ -44,17 +46,12 @@ class SVGExporter : Exporter
         s.Append(x.ToString() + "," + y.ToString());
 
         xmlwriter.WriteAttributeString("points", s.ToString());
-        xmlwriter.WriteAttributeString("stroke-width", strokewidth.ToString());
-        xmlwriter.WriteAttributeString("fill", fill);
-        xmlwriter.WriteAttributeString("stroke", stroke);
-        xmlwriter.WriteEndElement();
+        Finish();
     }
 
     public override void makeStar(int x, int y, int width, int height)
     {
-        int strokewidth = 1;
-        string fill = "none";
-        string stroke = "black";
+        
         xmlwriter.WriteStartElement("polyline");
 
         StringBuilder s = new StringBuilder();
@@ -84,10 +81,7 @@ class SVGExporter : Exporter
         s.Append(pts[0].X.ToString() + "," + pts[0].Y.ToString() + " ");
 
         xmlwriter.WriteAttributeString("points", s.ToString());
-        xmlwriter.WriteAttributeString("stroke-width", strokewidth.ToString());
-        xmlwriter.WriteAttributeString("fill", fill);
-        xmlwriter.WriteAttributeString("stroke", stroke);
-        xmlwriter.WriteEndElement();
+        Finish();
     }
 
     internal void setWriter(XmlWriter writer)
