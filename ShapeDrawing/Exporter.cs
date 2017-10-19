@@ -11,9 +11,11 @@ public abstract class Exporter
     public abstract void makeRectangle(int x,int y,int width, int height);
     public abstract void makeStar(int x, int y, int width, int height);
 
+    protected int numPoints = 5;
     protected Point[] calcStar(int x, int y, int width, int height)
     {
-        int numPoints = 5;
+
+        
         Point[] pts = new Point[numPoints];
         double rx = width / 2;
         double ry = height / 2;

@@ -58,7 +58,6 @@ class SVGExporter : Exporter
         StringBuilder s = new StringBuilder();
 
         Point[] pts = calcStar(x, y, width, height);
-        int numPoints = 5;
 
         for (int i = 0; i < numPoints; i++)
         {

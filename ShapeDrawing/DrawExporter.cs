@@ -34,8 +34,8 @@ class DrawExporter : Exporter
 
     {
         Pen pen = new Pen(Color.Black);
-
-        int numPoints = 5;
+        
+        
         Point[] pts = calcStar(x, y, width, height);
 
         for (int i = 0; i < numPoints; i++)
