@@ -57,25 +57,10 @@ class SVGExporter : Exporter
 
         StringBuilder s = new StringBuilder();
 
+        Point[] pts = calcStar(x, y, width, height);
         int numPoints = 5;
-        Point[] pts = new Point[numPoints];
-        double rx = width / 2;
-        double ry = height / 2;
-        double cx = x + rx;
-        double cy = y + ry;
 
-        double theta = -Math.PI / 2;
-        double dtheta = 4 * Math.PI / numPoints;
-        int i;
-        for (i = 0; i < numPoints; i++)
-        {
-            pts[i] = new Point(
-                Convert.ToInt32(cx + rx * Math.Cos(theta)),
-                Convert.ToInt32(cy + ry * Math.Sin(theta)));
-            theta += dtheta;
-        }
-
-        for (i = 0; i < numPoints; i++)
+        for (int i = 0; i < numPoints; i++)
         {
             s.Append(pts[i].X.ToString() + "," + pts[i].Y.ToString() + " ");
         }

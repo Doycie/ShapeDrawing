@@ -9,7 +9,9 @@ public abstract class Exporter
 {
     public abstract void makeCircle(int x, int y, int size);
     public abstract void makeRectangle(int x,int y,int width, int height);
-    public virtual void makeStar(int x, int y, int width, int height)
+    public abstract void makeStar(int x, int y, int width, int height);
+
+    protected Point[] calcStar(int x, int y, int width, int height)
     {
         int numPoints = 5;
         Point[] pts = new Point[numPoints];
@@ -28,7 +30,9 @@ public abstract class Exporter
                 Convert.ToInt32(cy + ry * Math.Sin(theta)));
             theta += dtheta;
         }
+        return pts;
     }
+    
 }
 
 
