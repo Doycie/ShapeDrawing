@@ -11,6 +11,7 @@ public class Star : Shape
 	private int y;
 	private int width;
 	private int height;
+    
 
 	public Star (int x, int y, int width, int height)
 	{
@@ -18,11 +19,32 @@ public class Star : Shape
 		this.y = y;
 		this.width = width;
 		this.height = height;
-	}
+        
+    }
 
 	public override void Export (Exporter exporter)
 	{
-        exporter.makeStar(x, y, width,height);
+        List<Point> points = new List<Point>();
+
+        int numPoints = 5;
+
+        double rx = width / 2;
+        double ry = height / 2;
+        double cx = x + rx;
+        double cy = y + ry;
+
+        double theta = -Math.PI / 2;
+        double dtheta = 4 * Math.PI / numPoints;
+        int i;
+        for (i = 0; i < numPoints; i++)
+        {
+            points.Add(new Point(
+                Convert.ToInt32(cx + rx * Math.Cos(theta)),
+                Convert.ToInt32(cy + ry * Math.Sin(theta))));
+            theta += dtheta;
+        }
+
+        exporter.drawLines(points);
     }
 }
 

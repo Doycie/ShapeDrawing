@@ -7,6 +7,10 @@ using System.Drawing;
 
 public abstract class Exporter
 {
+    public abstract void drawLines(List<Point> points);
+    public abstract void drawElipse(int x, int y, int height, int width);
+
+    /*
     public abstract void makeCircle(int x, int y, int size);
     public abstract void makeRectangle(int x,int y,int width, int height);
     public abstract void makeStar(int x, int y, int width, int height);
@@ -34,7 +38,7 @@ public abstract class Exporter
         }
         return pts;
     }
-    
+    */
 }
 
 

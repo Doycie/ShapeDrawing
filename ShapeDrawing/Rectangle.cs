@@ -23,7 +23,14 @@ class Rectangle : Shape
     
 	public override void Export(Exporter exporter)
     {
-        exporter.makeRectangle(x,y,width,height);
+        List<Point> points = new List<Point>();
+
+        points.Add(new Point(x, y));
+        points.Add(new Point(x + width, y));
+        points.Add(new Point(x + width, y + height));
+        points.Add(new Point(x, y + height));
+
+        exporter.drawLines(points);
     }
 }
 

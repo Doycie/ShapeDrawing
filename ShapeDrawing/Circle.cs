@@ -21,8 +21,7 @@ class Circle : Shape
 
     public override void Export(Exporter exporter)
     {
-
-        exporter.makeCircle(x,y,size);
+        exporter.drawElipse(x,y,size,size);
     }
 
 }
