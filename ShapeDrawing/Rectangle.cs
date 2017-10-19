@@ -21,7 +21,7 @@ class Rectangle : Shape
 		this.height = height;
     }
     
-	public override void Draw(Exporter exporter)
+	public override void Export(Exporter exporter)
     {
         exporter.makeRectangle(x,y,width,height);
     }

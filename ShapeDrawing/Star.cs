@@ -20,7 +20,7 @@ public class Star : Shape
 		this.height = height;
 	}
 
-	public override void Draw (Exporter exporter)
+	public override void Export (Exporter exporter)
 	{
         exporter.makeStar(x, y, width,height);
     }

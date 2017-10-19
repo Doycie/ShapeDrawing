@@ -93,7 +93,7 @@ public class ShapeDrawingForm : Form
 
                 foreach (Shape shape in shapes)
                 {
-                    shape.Draw(ex);
+                    shape.Export(ex);
                 }
 
 
@@ -113,6 +113,6 @@ public class ShapeDrawingForm : Form
         exporter = new DrawExporter(e.Graphics);
         // Draw all the shapes
         foreach (Shape shape in shapes)
-			shape.Draw(exporter);
+			shape.Export(exporter);
 	}
 }

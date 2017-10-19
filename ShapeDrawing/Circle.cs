@@ -19,7 +19,7 @@ class Circle : Shape
 		this.size = size;
     }
 
-    public override void Draw(Exporter exporter)
+    public override void Export(Exporter exporter)
     {
 
         exporter.makeCircle(x,y,size);

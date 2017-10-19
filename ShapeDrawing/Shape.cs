@@ -8,6 +8,6 @@ public abstract class Shape
 	{
 	}
 
-    public abstract void Draw(Exporter exporter);
+    public abstract void Export(Exporter exporter);
 	
 }
