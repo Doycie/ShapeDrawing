@@ -31,6 +31,7 @@ class DrawExporter : Exporter
     }
 
     public override void makeStar(int x, int y, int width, int height)
+
     {
         Pen pen = new Pen(Color.Black);
 
