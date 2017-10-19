@@ -8,13 +8,14 @@ using System.Drawing;
 class SVGExporter : Exporter
 {
     XmlWriter xmlwriter;
-    private int strokewidth = 1;
-    private string fill = "none";
-    private string stroke = "black";
 
     private void Finish()
     {
-        xmlwriter.WriteAttributeString("stroke-width", strokewidth.ToString());
+        string strokewidth = "1";
+        string fill = "none";
+        string stroke = "black";
+
+        xmlwriter.WriteAttributeString("stroke-width", strokewidth);
         xmlwriter.WriteAttributeString("fill", fill);
         xmlwriter.WriteAttributeString("stroke", stroke);
         xmlwriter.WriteEndElement();
