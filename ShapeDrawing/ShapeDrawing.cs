@@ -75,17 +75,19 @@ public class ShapeDrawingForm : Form
             using(writer =  XmlWriter.Create(saveFileDialog.FileName))
             {
                 Exporter ex = new SVGExporter(writer);
-                //(ex as SVGExporter).setWriter(writer);
 
+                //create the file & write the header
                 writer.WriteStartDocument(false);
                 writer.WriteStartElement("svg" , "http://www.w3.org/2000/svg");
                 writer.WriteAttributeString("version", "1.1");
 
+                //write the contents
                 foreach (Shape shape in shapes)
                 {
                     shape.Export(ex);
                 }
 
+                //write the footer & finish the file
                 writer.WriteEndElement();
                 writer.WriteEndDocument();
             }
